@@ -90,6 +90,13 @@ func (logger *Logger) Log(level int, format string, a ...interface{}) {
 	}
 }
 
+func (logger *Logger) Debug(format string, a ...interface{}) {
+	msg := fmt.Sprintf(format, a...)
+	//long_msg := fmt.Sprintf("%s [info] in %s %s", getLogTimeString(), getLogContextString(), msg)
+	short_msg := fmt.Sprintf("[debug] %s %s", getShortLogContextString(), msg)
+	logger.Log(DEBUG, short_msg)
+}
+
 func (logger *Logger) Info(format string, a ...interface{}) {
 	msg := fmt.Sprintf(format, a...)
 	//long_msg := fmt.Sprintf("%s [info] in %s %s", getLogTimeString(), getLogContextString(), msg)

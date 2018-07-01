@@ -1,6 +1,6 @@
-package main
+package test_log
 
-import "./logging"
+import "../../logging"
 
 var logger = logging.GetLogger()
 
