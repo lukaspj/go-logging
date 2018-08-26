@@ -24,10 +24,12 @@ type ILogger interface {
 	SetLevel(level int)
 	GetLevel() int
 	AddLogOutput(output ILogOutput)
-	Info(a ...interface{})
-	Warn(a ...interface{})
-	Error(a ...interface{})
-	Fatal(a ...interface{})
+	Log(level int, format string, a ...interface{})
+	Debug(format string, a ...interface{})
+	Info(format string, a ...interface{})
+	Warn(format string, a ...interface{})
+	Error(format string, a ...interface{})
+	Fatal(format string, a ...interface{})
 }
 
 type ILogOutput interface {
@@ -39,7 +41,7 @@ type Logger struct {
 	output []ILogOutput
 }
 
-func GetLogger() *Logger {
+func GetLogger() ILogger {
 	return logger
 }
 
